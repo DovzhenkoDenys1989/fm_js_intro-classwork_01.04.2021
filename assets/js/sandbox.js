@@ -1,27 +1,41 @@
 /*
-Напишите функцию-конструктор Accumulator(startingValue).
-Объект, который она создаёт, должен уметь следующее:
-Хранить «текущее значение» в свойстве value. 
-Начальное значение устанавливается в аргументе конструктора startingValue.
-Метод read() использует prompt для получения числа и прибавляет его к свойству value.
-Таким образом, свойство value является текущей суммой всего,
-что ввёл пользователь при вызовах метода read(),
-с учётом начального значения startingValue. 
+new Ladder(); - ЛЕСТИНИЦА
+value - та ступенька на который сейчас
+up() - поднимает вас на одну ступеньку
+down() - опускает на одну
+showStep() - показывает на какой вы ступеньке
+
+Сделать это возможным:
+ladder.up().up().down().showStep();
+
 */
-
-function Accumulator(startingValue){
-  this.value = isFinite(startingValue) ? +startingValue : 0;
-}
-
-Accumulator.prototype = new AccumulatorPrototype();
-
-function AccumulatorPrototype(){
-  this.read = function read(){
-    const userNumber = +prompt("Введите число: ");
-    if(!isFinite(userNumber)) return this.value;
-
-    return this.value += userNumber;
+function Ladder(value){
+  this.value = 0;
+  
   }
-}
-
-const accumulator = new Accumulator();
+  
+  Ladder.prototype = new LadderPrototype();
+  function LadderPrototype() {
+    this.up = function up(){
+      this.value++;
+      return this;
+   }
+  
+   this.up = function down(){
+     this.value--;
+     return this;
+   }
+  
+   this.showStep = function showStep(){
+   return this.value;
+   }
+  }
+  
+  const ladder = new Ladder(5);
+  
+  //ladder.up();
+  //ladder.up();
+  //ladder.down();
+  //ladder.showStep();
+  
+  ladder.up().up().down().showStep();
