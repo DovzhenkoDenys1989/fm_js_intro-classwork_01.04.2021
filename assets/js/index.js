@@ -35,3 +35,21 @@ function StudentPrototype(){
 */
 
 const student2 = new Student('Bob', 'Black', 25, true);
+
+
+const car = {
+  go() {
+    return this.name;
+  }
+}
+
+const driver1 = {
+  name: 'John Smith',
+}
+
+const driver2 = {
+  name: 'John Doe',
+}
+
+driver1.__proto__ = car;
+driver2.__proto__ = car;
